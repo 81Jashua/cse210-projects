@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -11,25 +12,37 @@ class Program
         //Find the maximum, or largest, number in the list.
 
         int userFeedback = -1;
+        int smallNumber = 99999;
         List<int> numberList = new List<int>();
+        Console.WriteLine("Enter a list of numbers, type 0 when finished.");
 
         while (userFeedback != 0)
         {
-            Console.Write("Enter a list of numbers, type 0 when finished.");
             userFeedback = int.Parse(Console.ReadLine());
-
             if (userFeedback != 0) 
             {
                 numberList.Add(userFeedback);
+                Console.WriteLine($"Entered number: {userFeedback}");                
             }             
         }
+        numberList.Sort();        
         
+        Console.WriteLine($"The sum is: {numberList.Sum()}");
+        Console.WriteLine($"The average is: {numberList.Average()}");
+        Console.WriteLine($"The largest number is: {numberList.Max()}");
         foreach(int num in numberList)
         {
-            Console.Write(num);
+            if (num > 0 && num < smallNumber) 
+            {
+                smallNumber = num;
+            }
         }
-        Console.WriteLine($"The total amount is: {numberList.Sum()}");
-        Console.WriteLine($"The Average is: {numberList.Average()}");
-        Console.WriteLine($"The largest number was: {numberList.Max()}");
+        Console.WriteLine($"The smallest positive number is: {smallNumber}");
+
+        Console.Write("The sorted list is: ");
+        foreach(int num in numberList)
+            {
+                Console.Write($"{num},");
+            }
     }
 }
