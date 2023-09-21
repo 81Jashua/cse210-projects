@@ -1,3 +1,4 @@
+using System.IO;
 public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
@@ -22,7 +23,13 @@ public class Journal
 
     public void SaveToFile(string file)
     {
+        string fileName = file;
 
+        using (StreamWriter outputFile = new StreamWriter(fileName))
+        {
+            foreach (Entry entry in _entries)
+            outputFile.WriteLine($"Date: {entry._date}");
+        }
     }
 
     public void LoadFromFile(string file)
