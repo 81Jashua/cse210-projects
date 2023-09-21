@@ -25,11 +25,7 @@ public class PromptGenerator
     public string GetRandomPrompt()
     {
         var random = new Random();
-         //var list = new List<string>{ "one","two","three","four"};
-         //int index = random.Next(list.Count);
-         //Console.WriteLine(list[index]);
         int randomPrompt = random.Next(_prompts.Count);
-        //Console.WriteLine(_prompts[randomPrompt]);
         return _prompts[randomPrompt];
     }
 
