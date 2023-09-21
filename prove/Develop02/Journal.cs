@@ -1,6 +1,6 @@
 public class Journal
 {
-    List<Entry> _entries = new List<Entry>();
+    public List<Entry> _entries = new List<Entry>();
 
     public Journal()
     {
@@ -16,7 +16,7 @@ public class Journal
     {
         foreach(Entry entry in _entries)
         {
-            
+            entry.Display();
         }
     }
 
