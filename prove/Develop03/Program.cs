@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop03 World!");
+        Reference reference = new("verse",2,12);
+
+        Console.WriteLine(reference.GetDisplayText());
     }
 }
