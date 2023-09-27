@@ -7,6 +7,10 @@ public class Word
     {
         _text = text;
     }
+    public void SetWord(string text)
+    {
+        _text = text;
+    }
 
     public void Hide()
     {
@@ -25,6 +29,11 @@ public class Word
 
     public string GetDisplayText()
     {
-        return _text;
+        return $"{_text} ";
+    }
+
+    public bool testBool()
+    {
+        return _isHidden;
     }
 }
