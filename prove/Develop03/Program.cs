@@ -18,45 +18,12 @@ class Program
         Console.WriteLine("\nPress 'enter' to continue or type 'quit' to finish:");
 
         while (Console.ReadKey().Key == ConsoleKey.Enter)
-        {
-            
-            // var random = new Random();
-            // int randomPrompt = random.Next(_prompts.Count);
-            // return _prompts[randomPrompt];
-            //int foo = random.Next(scripture.getWords());
-            //scripture.HideRandomWords(foo);            
+        { 
             scripture.HideRandomWords(scripture.ReturnRandomNumber(randomList));
             Console.Clear();
             Console.WriteLine(reference.GetDisplayText());
             Console.WriteLine(scripture.GetDisplayText());
-            Console.WriteLine("\nPress 'enter' to continue or type 'quit' to finish:");
-            foreach(int car in randomList)
-            {
-                Console.Write($"{car},");
-            }
+            Console.WriteLine("\nPress 'enter' to continue or type 'quit' to finish:");            
         }
-
-        ///Temp code
-        // void PopulateList(List<int> list)
-        // {
-        //     int foo = scripture.getWords();
-        //     for (int i = 0; i < foo; i++)
-        //     {
-        //         list.Add(i);                
-        //     }
-        //     foreach(int car in list)
-        //     {
-        //         Console.Write($"{car},");
-        //     }
-        // }
-        
-        // int ReturnRandomNumber(List<int> list)
-        // {
-        //     int tempCount = list.Count();
-        //     int foop = random.Next(tempCount);
-        //     int hoop = list[foop];
-        //     list.RemoveAt(foop);
-        //     return hoop;
-        // }
     }    
 }

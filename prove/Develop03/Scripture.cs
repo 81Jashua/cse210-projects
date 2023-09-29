@@ -59,11 +59,7 @@ public class Scripture
         for (int i = 0; i < foo; i++)
         {
             list.Add(i);                
-        }
-        foreach(int car in list)
-        {
-            Console.Write($"{car},");
-        }
+        }        
     }
 
     public int ReturnRandomNumber(List<int> list)
