@@ -19,6 +19,11 @@ class Program
 
         while (Console.ReadKey().Key == ConsoleKey.Enter)
         { 
+            if(randomList.Count == 0)
+            {
+                scripture.RevealAllScriptures();
+                scripture.PopulateList(randomList);
+            } 
             scripture.HideRandomWords(scripture.ReturnRandomNumber(randomList));
             Console.Clear();
             Console.WriteLine(reference.GetDisplayText());

@@ -40,8 +40,9 @@ public class Scripture
                     tug += "-";
                 }
 
-                word.SetWord(tug);                
-                builder.Append(word.GetDisplayText());
+                //word.SetWord(tug);                
+                //builder.Append(word.GetDisplayText());
+                builder.Append($"{tug} ");
             }
             else 
             {
@@ -63,12 +64,20 @@ public class Scripture
     }
 
     public int ReturnRandomNumber(List<int> list)
+    {
+        Random random = new Random();
+        int tempCount = list.Count();
+        int foop = random.Next(tempCount);
+        int hoop = list[foop];
+        list.RemoveAt(foop);
+        return hoop;        
+    }
+
+    public void RevealAllScriptures()
+    {
+        foreach(Word word in _words)
         {
-            Random random = new Random();
-            int tempCount = list.Count();
-            int foop = random.Next(tempCount);
-            int hoop = list[foop];
-            list.RemoveAt(foop);
-            return hoop;
+            word.Show();
         }
+    }
 }
