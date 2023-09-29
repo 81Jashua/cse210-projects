@@ -51,4 +51,28 @@ public class Scripture
         string scripture = builder.ToString();
         return scripture;
     }
+
+    ///Temp code
+    public void PopulateList(List<int> list)
+    {
+        int foo = getWords();
+        for (int i = 0; i < foo; i++)
+        {
+            list.Add(i);                
+        }
+        foreach(int car in list)
+        {
+            Console.Write($"{car},");
+        }
+    }
+
+    public int ReturnRandomNumber(List<int> list)
+        {
+            Random random = new Random();
+            int tempCount = list.Count();
+            int foop = random.Next(tempCount);
+            int hoop = list[foop];
+            list.RemoveAt(foop);
+            return hoop;
+        }
 }
