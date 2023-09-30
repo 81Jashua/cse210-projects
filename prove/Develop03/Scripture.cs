@@ -11,8 +11,8 @@ public class Scripture
         List<string> words = new List<string>(text.Split(' '));
         foreach (var word in words)
         {
-            Word foo = new(word);
-            _words.Add(foo);
+            Word wordFromTxt = new(word);
+            _words.Add(wordFromTxt);
         }        
     }
     public int getWords()
@@ -32,17 +32,14 @@ public class Scripture
         {
             if (word.IsHidden() == true)
             {
-                string foo = word.GetDisplayText();
-                string tug = "";
-                int bar = foo.Length;
-                for (int i = 1; i < bar; i++) 
+                string newWord = word.GetDisplayText();
+                string hiddenWord = "";
+                int wordLength = newWord.Length;
+                for (int i = 1; i < wordLength; i++) 
                 { 
-                    tug += "-";
+                    hiddenWord += "-";
                 }
-
-                //word.SetWord(tug);                
-                //builder.Append(word.GetDisplayText());
-                builder.Append($"{tug} ");
+                builder.Append($"{hiddenWord} ");
             }
             else 
             {
@@ -56,8 +53,8 @@ public class Scripture
     ///Temp code
     public void PopulateList(List<int> list)
     {
-        int foo = getWords();
-        for (int i = 0; i < foo; i++)
+        int wordCount = getWords();
+        for (int i = 0; i < wordCount; i++)
         {
             list.Add(i);                
         }        
@@ -67,10 +64,10 @@ public class Scripture
     {
         Random random = new Random();
         int tempCount = list.Count();
-        int foop = random.Next(tempCount);
-        int hoop = list[foop];
-        list.RemoveAt(foop);
-        return hoop;        
+        int randomNum = random.Next(tempCount);
+        int randomListIndexNum = list[randomNum];
+        list.RemoveAt(randomNum);
+        return randomListIndexNum;        
     }
 
     public void RevealAllScriptures()
