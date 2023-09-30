@@ -2,6 +2,8 @@ using System;
 
 class Program
 {
+    private static string _line = "";
+
     static void Main(string[] args)
     {
         Reference reference = new("Proverbs",3,5);
@@ -15,26 +17,31 @@ class Program
         Console.WriteLine(scripture.GetDisplayText());
         Console.WriteLine("\nPress 'enter' to continue or type 'quit' to finish:");
 
-        {
-            while (Console.ReadKey().Key == ConsoleKey.Enter)
-            { 
-                if(randomList.Count == 0)
-                {
-                    scripture.RevealAllScriptures();
-                    scripture.PopulateList(randomList);
-                } 
-                scripture.HideRandomWords(scripture.ReturnRandomNumber(randomList));
-                Console.Clear();
-                Console.WriteLine(reference.GetDisplayText());
-                Console.WriteLine(scripture.GetDisplayText());
-                Console.WriteLine("\nPress 'enter' to continue or type 'quit' to finish:");
-                
-                string response = Console.ReadLine();
-                if(response == "quit")
-                {
-                    break;
-                }            
-            }
-        }    
-    }    
+        while (Continue(Console.ReadKey()))
+        { 
+            _line = "";
+
+            if(randomList.Count == 0)
+            {
+                scripture.RevealAllScriptures();
+                scripture.PopulateList(randomList);
+            } 
+            scripture.HideRandomWords(scripture.ReturnRandomNumber(randomList));
+            Console.Clear();
+            Console.WriteLine(reference.GetDisplayText());
+            Console.WriteLine(scripture.GetDisplayText());
+            Console.WriteLine("\nPress 'enter' to continue or type 'quit' to finish:");      
+        }
+            
+    }
+
+    private static bool Continue(ConsoleKeyInfo key)
+    {
+        if (key.Key == ConsoleKey.Enter) return true;
+
+        _line += key.KeyChar;
+        if (_line == "quit") return false;
+
+        return Continue(Console.ReadKey());
+    }
 }
