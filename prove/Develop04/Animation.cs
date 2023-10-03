@@ -22,6 +22,7 @@ public class Animation
             
         
             seconds -= 1;
-        }        
+        }
+        Console.Write("\n");        
     }
 }
