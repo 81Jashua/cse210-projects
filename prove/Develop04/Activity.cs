@@ -11,6 +11,10 @@ public abstract class Activity
         _duration = duration;
     }
 
+    public int GetDuration()
+    {
+        return _duration;
+    }
     public void DisplayStartingMessage()
     {
 
@@ -23,11 +27,40 @@ public abstract class Activity
 
     public void ShowSpinner(int seconds)
     {
-
+        while (seconds != 0)
+        {
+            Console.Write("/");
+            Thread.Sleep(250);
+            Console.Write("\b \b"); // Erase the + character            
+            
+            Console.Write("-"); // Replace it with the - character
+            Thread.Sleep(250);
+            Console.Write("\b \b");            
+            
+            Console.Write("\\"); // Replace it with the - character
+            Thread.Sleep(250);
+            Console.Write("\b \b");
+            
+            Console.Write("|"); // Replace it with the - character
+            Thread.Sleep(250);
+            Console.Write("\b \b");
+            
+        
+            seconds -= 1;
+        }
+        Console.Write("\n");
     }
 
     public void ShowCountDown(int seconds)
     {
-        
+        while (seconds != 0)
+        {
+            Console.Write($"{seconds}");
+            Thread.Sleep(1000);
+            Console.Write("\b \b"); // Erase the + character            
+             
+            seconds -= 1;
+        }
+        Console.Write("\n");
     }
 }
