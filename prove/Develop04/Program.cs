@@ -25,10 +25,12 @@ class Program
                 case 1:
                 {
                     //Start breathing activity
-                    Console.WriteLine("\nYou chose the breathing activity\n");
-                    BreathingActivity bActivity = new BreathingActivity("breathing","description",5);
-                    bActivity.ShowSpinner(bActivity.GetDuration());
-                    bActivity.ShowCountDown(bActivity.GetDuration());                               
+                    Console.Clear();
+                    string name = "Breathing Activity";
+                    string description = "This activity will help you relax by walking you through breathing in and out slowly.\nClear your mind and focus on your breathing.";
+                    BreathingActivity breathingActivity = new BreathingActivity(name, description);
+                    breathingActivity.Run();
+                                                   
                     break;
                 }
                 case 2:

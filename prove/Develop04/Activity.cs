@@ -4,6 +4,11 @@ public abstract class Activity
     private string _description;
     private int _duration;
 
+    public Activity(string name, string description)
+    {
+        _name = name;
+        _description = description;
+    }
     public Activity(string name, string description, int duration)
     {
         _name = name;
@@ -15,9 +20,16 @@ public abstract class Activity
     {
         return _duration;
     }
+
+    public void SetDuration(int seconds)
+    {
+        _duration = seconds;
+    }
     public void DisplayStartingMessage()
     {
-
+        Console.WriteLine($"Welcome to the {_name}");
+        Console.WriteLine($"\n{_description}");
+        Console.WriteLine("\nHow long in seconds, would you like for your session?");
     }
 
     public void DisplayEndingMessage()
@@ -50,7 +62,6 @@ public abstract class Activity
         }
         Console.Write("\n");
     }
-
     public void ShowCountDown(int seconds)
     {
         while (seconds != 0)
@@ -61,6 +72,10 @@ public abstract class Activity
              
             seconds -= 1;
         }
-        Console.Write("\n");
+        Console.Write("\n\n");
+    }
+    public void Pause()
+    {
+        ShowSpinner(5);        
     }
 }
