@@ -34,7 +34,9 @@ public abstract class Activity
 
     public void DisplayEndingMessage()
     {
-
+        Console.WriteLine($"Welcome to the {_name}");
+        Console.WriteLine($"\n{_description}");
+        Console.WriteLine("\nHow long in seconds, would you like for your session?");
     }
 
     public void ShowSpinner(int seconds)

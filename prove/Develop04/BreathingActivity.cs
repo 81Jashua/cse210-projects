@@ -24,13 +24,22 @@ public class BreathingActivity : Activity
         
         while (seconds >= 3)
         {
-            
+
+            int setCount;
+            if (seconds > 0 && seconds < 6)
+                    {
+                        setCount = seconds;
+                    }
+            else 
+            {
+                setCount = 3;
+            } 
             switch (breathIn)
             {
                 case true:
                 {
                     Console.Write($"Breath in... ");
-                    ShowCountDown(3);
+                    ShowCountDown(setCount);
                     breathIn = false;
                     
                     break;
@@ -38,7 +47,7 @@ public class BreathingActivity : Activity
                 case false:
                 {
                     Console.Write("Breath out... ");
-                    ShowCountDown(3);
+                    ShowCountDown(setCount);
                     breathIn = true;
 
                     break;
