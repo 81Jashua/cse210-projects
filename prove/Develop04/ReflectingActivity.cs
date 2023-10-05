@@ -18,6 +18,7 @@ public class ReflectingActivity : Activity
         SetQuestions();
         DisplayPrompt();
         Continue();
+        DisplayQuestions();
         DisplayEndingMessage();
         Pause();
     }
@@ -33,18 +34,36 @@ public class ReflectingActivity : Activity
     {
         var random = new Random();
         int randomQuestion = random.Next(_questions.Count);
-        return _questions[randomQuestion];
+        string tempQuestion = _questions[randomQuestion];
+        _questions.RemoveAt(randomQuestion);
+        return tempQuestion;
     }
 
     public void DisplayPrompt()
     {
         Console.WriteLine($"Consider the following prompt:\n---{GetRandomPrompt()}---");
-        Console.WriteLine("When you have something in mind press Enter to continue");
+        Console.WriteLine("When you have something in mind press Enter to continue");        
     }
 
     public void DisplayQuestions()
     {
         Console.WriteLine($"Now ponder on each of the following questions as they are related to this experience.");
+        int seconds = GetDuration();
+        
+        while (seconds > 0)
+        {
+
+            int setCount;
+            if (seconds < 5)
+                    {
+                        setCount = seconds;
+                    }
+            else {setCount = 5;} 
+            Console.WriteLine($"{GetRandomQuestion()}");
+            ShowCountDown(setCount);
+
+            seconds -= 5;
+        }
     }
 
     public void SetQuestions()
