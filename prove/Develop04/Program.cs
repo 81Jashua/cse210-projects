@@ -5,16 +5,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Console.WriteLine("How many seconds: ");
-        // int sec = int.Parse(Console.ReadLine()); 
-        // Console.Write($"Hello Develop04 World!");
-        // //RunAnimation(10);
-        // Animation.RunAnimation(sec);
-        // Console.WriteLine("BOooooooooooOOOOooo");
-
         int selection = 1;
         while(selection != 4)
         {
+            Console.Clear();
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Write\n  2. Display\n  3. Load\n  4. Quit");
             Console.Write("Select a choice from the menu: ");

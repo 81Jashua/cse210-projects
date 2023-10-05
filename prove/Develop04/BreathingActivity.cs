@@ -14,7 +14,8 @@ public class BreathingActivity : Activity
         Console.WriteLine($"Get ready...");
         Pause();
         Breaths();
-        //ShowCountDown(GetDuration());
+        DisplayEndingMessage();
+        Pause();
     }
 
     public void Breaths()
