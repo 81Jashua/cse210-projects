@@ -30,7 +30,12 @@ class Program
                 case 2:
                 {
                     //Start reflecting activity
-                    Console.WriteLine("You chose the reflecting activity");
+                    Console.Clear();
+                    string name = "Reflecting Activity";
+                    string description = "This activity will help you reflect on times in your life when you have shown strength and resilience.\nThis will help you recognize the power you have and how you can use it in other aspects of your life.";
+                    ReflectingActivity reflectingActivity = new ReflectingActivity(name,description);
+                    reflectingActivity.Run();
+
                     break;
                 }
                 case 3:

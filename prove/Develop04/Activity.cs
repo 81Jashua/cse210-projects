@@ -36,7 +36,7 @@ public abstract class Activity
     {
         Console.WriteLine($"Well done!!");
         Pause();
-        Console.WriteLine($"\nYou have completed another {GetDuration()} seconds of the Breathing Activity.");
+        Console.WriteLine($"\nYou have completed another {GetDuration()} seconds of the {_name}.");
         //Console.WriteLine("\nHow long in seconds, would you like for your session?");
     }
 
