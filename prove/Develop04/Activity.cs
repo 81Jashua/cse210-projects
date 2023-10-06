@@ -15,12 +15,10 @@ public abstract class Activity
         _description = description;
         _duration = duration;
     }
-
     public int GetDuration()
     {
         return _duration;
     }
-
     public void SetDuration(int seconds)
     {
         _duration = seconds;
@@ -31,7 +29,6 @@ public abstract class Activity
         Console.WriteLine($"\n{_description}");
         Console.WriteLine("\nHow long in seconds, would you like for your session?");
     }
-
     public void DisplayEndingMessage()
     {
         Console.WriteLine($"Well done!!");
@@ -39,7 +36,6 @@ public abstract class Activity
         Console.WriteLine($"\nYou have completed another {GetDuration()} seconds of the {_name}.");
         //Console.WriteLine("\nHow long in seconds, would you like for your session?");
     }
-
     public void ShowSpinner(int seconds)
     {
         while (seconds != 0)

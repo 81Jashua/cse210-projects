@@ -5,7 +5,6 @@ public class BreathingActivity : Activity
     public BreathingActivity(string name, string description) : base(name, description)
     {
     }
-
     public void Run()
     {
         DisplayStartingMessage();                    
@@ -17,7 +16,6 @@ public class BreathingActivity : Activity
         DisplayEndingMessage();
         Pause();
     }
-
     public void Breaths()
     {
         int seconds = GetDuration();
@@ -25,7 +23,6 @@ public class BreathingActivity : Activity
         
         while (seconds >= 3)
         {
-
             int setCount;
             if (seconds > 0 && seconds < 6)
                     {

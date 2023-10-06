@@ -2,11 +2,9 @@ public class ReflectingActivity : Activity
 {
     private List<string> _prompts = new List<string>();
     private List<string> _questions = new List<string>();
-
     public ReflectingActivity(string name, string description) : base(name, description)
     {
     }
-
     public void Run()
     {
         DisplayStartingMessage();                    
@@ -22,14 +20,12 @@ public class ReflectingActivity : Activity
         DisplayEndingMessage();
         Pause();
     }
-
     public string GetRandomPrompt()
     {
         var random = new Random();
         int randomPrompt = random.Next(_prompts.Count);
         return _prompts[randomPrompt];
     }
-
     public string GetRandomQuestion()
     {
         var random = new Random();
@@ -38,13 +34,11 @@ public class ReflectingActivity : Activity
         _questions.RemoveAt(randomQuestion);
         return tempQuestion;
     }
-
     public void DisplayPrompt()
     {
         Console.WriteLine($"Consider the following prompt:\n---{GetRandomPrompt()}---");
         Console.WriteLine("When you have something in mind press Enter to continue");        
     }
-
     public void DisplayQuestions()
     {
         Console.WriteLine($"Now ponder on each of the following questions as they are related to this experience.");
@@ -65,7 +59,6 @@ public class ReflectingActivity : Activity
             seconds -= 5;
         }
     }
-
     public void SetQuestions()
     {
         string q1 = "Why was this experience meaningful to you?";
@@ -101,7 +94,6 @@ public class ReflectingActivity : Activity
         _prompts.Add(prompt3);
         _prompts.Add(prompt4);
     }
-
     public void Continue()
     {
         while (Console.ReadKey().Key != ConsoleKey.Enter)
