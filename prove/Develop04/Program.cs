@@ -10,7 +10,7 @@ class Program
         {
             Console.Clear();
             Console.WriteLine("Menu Options:");
-            Console.WriteLine("  1. Write\n  2. Display\n  3. Load\n  4. Quit");
+            Console.WriteLine("  1. Beathing Activity\n  2. Reflecting Activity\n  3. Listening Activity\n  4. Quit");
             Console.Write("Select a choice from the menu: ");
             selection = Int32.Parse(Console.ReadLine());
 
@@ -41,7 +41,11 @@ class Program
                 case 3:
                 {
                     //start listening activity
-                    Console.WriteLine("You chose the listening activity");
+                    Console.Clear();
+                    string name = "Listening Activity";
+                    string description = "This activity will help you reflect on the good things in your life\nby having you list as many things as you can in a certain area.";
+                    ListingActivity listingActivity = new ListingActivity(name,description);
+                    listingActivity.Run();
                     break;
                 }                    
             }
