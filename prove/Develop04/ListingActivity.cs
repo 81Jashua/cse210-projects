@@ -16,7 +16,8 @@ public class ListingActivity : Activity
         Pause();
         SetPrompts();
         GetRandomPrompt();
-        Pause();
+        //Pause();
+        Test();
     }
 
     public void GetRandomPrompt()
@@ -25,7 +26,8 @@ public class ListingActivity : Activity
         int randomPrompt = random.Next(_prompts.Count);
         string tempPrompt = _prompts[randomPrompt];
         _prompts.RemoveAt(randomPrompt);
-        Console.WriteLine(tempPrompt);
+        Console.WriteLine($"List as many responses you can to the following prompt:\n---{tempPrompt}---\nYou may begin in:");
+        ShowCountDown(5);
     }
 
     public void SetPrompts()
@@ -47,4 +49,52 @@ public class ListingActivity : Activity
     {
         return list;
     }
+
+    public void Test()
+    {
+        DateTime startTime = DateTime.Now;
+        DateTime futureTime = startTime.AddSeconds(GetDuration());
+        //Thread.Sleep(3000);
+
+        DateTime currentTime = DateTime.Now;
+        do 
+        {
+            Console.Write("> ");
+            string bar = Console.ReadLine();
+            _count += 1;
+            currentTime = DateTime.Now;
+        }
+        while (currentTime < futureTime);
+        
+
+        // if (currentTime < futureTime)
+        // {
+        //     Console.WriteLine("> ");
+        //     string bar = Console.ReadLine();
+        // }
+        // while (currentTime < futureTime)
+        // {
+            //Console.WriteLine("> ");
+            // if (Console.ReadKey().Key == ConsoleKey.Enter)
+            // {
+            //     _count += 1;
+            //     //string response = Console.ReadLine()
+
+            // }
+            //Console.WriteLine("We have not arrived at our future time yet...");
+            //Thread.Sleep(1000);
+        //     currentTime = DateTime.Now;
+        // }
+        Console.WriteLine($"You wrote {_count} messages!");
+        Pause();        
+    }
+
+    // public void Continue()
+    // {
+        
+    //     while (Console.ReadKey().Key != ConsoleKey.Enter)
+    //     {
+    //         Continue();
+    //     }
+    // }
 }
