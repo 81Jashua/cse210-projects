@@ -32,16 +32,20 @@ public class ReflectingActivity : Activity
         int randomQuestion = random.Next(_questions.Count);
         string tempQuestion = _questions[randomQuestion];
         _questions.RemoveAt(randomQuestion);
+        if (randomQuestion == 0)
+        {
+            SetQuestions();
+        }
         return tempQuestion;
     }
     public void DisplayPrompt()
     {
         Console.WriteLine($"Consider the following prompt:\n---{GetRandomPrompt()}---");
-        Console.WriteLine("When you have something in mind press Enter to continue");        
+        Console.WriteLine("\nWhen you have something in mind press Enter to continue");        
     }
     public void DisplayQuestions()
     {
-        Console.WriteLine($"Now ponder on each of the following questions as they are related to this experience.");
+        Console.WriteLine($"\nNow ponder on each of the following questions as they are related to this experience:");
         int seconds = GetDuration();
         
         while (seconds > 0)
@@ -53,7 +57,7 @@ public class ReflectingActivity : Activity
                         setCount = seconds;
                     }
             else {setCount = 5;} 
-            Console.WriteLine($"{GetRandomQuestion()}");
+            Console.Write($"{GetRandomQuestion()} ");
             ShowCountDown(setCount);
 
             seconds -= 5;

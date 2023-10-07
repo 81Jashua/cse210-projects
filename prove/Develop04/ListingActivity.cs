@@ -22,7 +22,8 @@ public class ListingActivity : Activity
         int randomPrompt = random.Next(_prompts.Count);
         string tempPrompt = _prompts[randomPrompt];
         _prompts.RemoveAt(randomPrompt);
-        Console.WriteLine($"List as many responses you can to the following prompt:\n---{tempPrompt}---\nYou may begin in:");
+        Console.WriteLine($"List as many responses you can to the following prompt:\n---{tempPrompt}---");
+        Console.Write("\nYou may begin in: ");
         ShowCountDown(5);
     }
     public void SetPrompts()
@@ -54,7 +55,7 @@ public class ListingActivity : Activity
         }
         while (currentTime < futureTime);
         
-        Console.WriteLine($"You wrote {_count} messages!");
+        Console.WriteLine($"\nYou wrote {_count} messages!");
         Pause();        
     }
 }
