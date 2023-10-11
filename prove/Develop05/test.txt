@@ -1,0 +1,2 @@
+SimpleGoal,simple goal,simple description,100,False
+SimpleGoal,simple two,description two,200,False
