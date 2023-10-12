@@ -90,9 +90,11 @@ public class GoalManager
 
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
+            outputFile.WriteLine(GetScore());
             foreach (Goal goal in _goals)
             {
-                outputFile.WriteLine($"{goal},{GetScore()},{goal.GetName()},{goal.GetDescription()},{goal.GetPoints()},{goal.IsComplete()}");
+                
+                outputFile.WriteLine($"{goal},{goal.GetName()},{goal.GetDescription()},{goal.GetPoints()},{goal.IsComplete()}");
             }
         }
     }
