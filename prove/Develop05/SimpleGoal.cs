@@ -8,20 +8,14 @@ public class SimpleGoal : Goal
         
     public override void RecordEvent()
     {
-        throw new NotImplementedException();
+        _isComplete = true;
     }
     public override bool IsComplete()
     {
         return _isComplete;
     }
     public override string GetStringRepresentation()
-    {
-        string status = "[ ]";
-        if (IsComplete() == true)
-        {
-            status = "[X]";
-        }
-        
-        return $"{status} {GetName()} ({GetDescription()})";
+    {       
+        return $"SimpleGoal,{GetName()},{GetDescription()},{GetPoints()},{IsComplete()}";
     }    
 }

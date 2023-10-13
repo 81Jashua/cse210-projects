@@ -42,7 +42,7 @@ public class GoalManager
         Console.WriteLine("Your goals are:");
         foreach(Goal goal in _goals)
         {
-            Console.WriteLine($"{_goals.IndexOf(goal) + 1}. {goal.GetStringRepresentation()}");
+            Console.WriteLine($"{_goals.IndexOf(goal) + 1}. {goal.GetDetailsString()}");
         }
     }
     public void CreateGoal()
@@ -70,11 +70,34 @@ public class GoalManager
             }
             case 2:
             {
+                Console.WriteLine("\n Congradulation you have choosen to create a Eternal Goal.");
+                Console.Write("What is the name of your goal? ");
+                string name = Console.ReadLine();
+                Console.Write("What is a short description of your goal? ");
+                string description = Console.ReadLine();
+                Console.Write("What is the amount of points associated with this goal? ");
+                string points = Console.ReadLine();
+
+                EternalGoal eternalGoal = new EternalGoal(name, description, points);
+                SetList(eternalGoal);
                 break;
             }
             case 3:
             {
-                
+                Console.WriteLine("\n Congradulation you have choosen to create a Checklist Goal.");
+                Console.Write("What is the name of your goal? ");
+                string name = Console.ReadLine();
+                Console.Write("What is a short description of your goal? ");
+                string description = Console.ReadLine();
+                Console.Write("What is the amount of points associated with this goal? ");
+                string points = Console.ReadLine();
+                Console.Write("What is the bonus for completing your goal? ");
+                int bonus = int.Parse(Console.ReadLine());
+                Console.Write("How many in the series to complete your goal? ");
+                int target = int.Parse(Console.ReadLine());
+
+                CheckListGoal checkListGoal = new CheckListGoal(name, description, points, bonus, target);
+                SetList(checkListGoal);
                 break;
             }
         }
@@ -94,7 +117,8 @@ public class GoalManager
             foreach (Goal goal in _goals)
             {
                 
-                outputFile.WriteLine($"{goal},{goal.GetName()},{goal.GetDescription()},{goal.GetPoints()},{goal.IsComplete()}");
+                //outputFile.WriteLine($"{goal},{goal.GetName()},{goal.GetDescription()},{goal.GetPoints()},{goal.IsComplete()}");
+                outputFile.WriteLine($"{goal.GetStringRepresentation()}");
             }
         }
     }
