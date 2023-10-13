@@ -27,6 +27,11 @@ public class CheckListGoal : Goal
     public override void RecordEvent()
     {
         _amountCompleted += 1;
+        if (IsComplete() == true)
+        {
+            int bonus = int.Parse(GetPoints()) + _bonus;
+            SetPoints(bonus.ToString());
+        }
     }
     public override bool IsComplete()
     {

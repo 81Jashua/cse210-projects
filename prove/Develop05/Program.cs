@@ -53,7 +53,7 @@ class Program
                 {
                     //Record Event
                     Console.Clear();
-                    Console.WriteLine("Record Event");
+                    goalManager.RecordEvent();
                     break;
                 }                                     
             }

@@ -10,9 +10,9 @@ public class GoalManager
         return _score;
     }
 
-    public void SetScore()
+    public void SetScore(int score)
     {
-        _score += 1;
+        _score += score;
     }
 
     public List<Goal> GetList()
@@ -104,7 +104,15 @@ public class GoalManager
     }
     public void RecordEvent()
     {
-
+        Console.WriteLine("The goals are:");
+        foreach (Goal goal in _goals)
+        {
+            Console.WriteLine($"{_goals.IndexOf(goal) + 1}. {goal.GetName()}");
+        }
+        Console.Write("Which goal did you accomplish: ");
+        int selection = int.Parse(Console.ReadLine()) -1;
+        _goals[selection].RecordEvent();
+        SetScore(int.Parse(_goals[selection].GetPoints()));
     }
     public void SaveGoals(string file)
     {
@@ -125,7 +133,10 @@ public class GoalManager
         _goals.Clear();
         string filename = file;
         string[] lines = File.ReadAllLines(filename);
-
+        //load score
+        _score = int.Parse(lines[0]);
+        
+        //load goals
         foreach (string line in lines.Skip(1))
         {
             string[] parts = line.Split(",");

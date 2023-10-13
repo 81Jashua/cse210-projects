@@ -5,7 +5,7 @@ public class EternalGoal : Goal
     }
     public override void RecordEvent()
     {
-        throw new NotImplementedException();
+        
     }
     public override bool IsComplete()
     {
