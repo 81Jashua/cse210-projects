@@ -1,1 +1,4 @@
-
+0
+SimpleGoal,simple name,simple description,100,False
+EternalGoal,eternal name,eternal description,200,False
+CheckListGoal,checklist name,checklist description,300,0,3,500,False

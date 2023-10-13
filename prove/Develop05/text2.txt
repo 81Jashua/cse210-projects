@@ -1,0 +1,4 @@
+0
+SimpleGoal,juggling goal,learn how to juggle balls,200,False
+EternalGoal,read scriptures,read one verse each day,50,False
+CheckListGoal,mow lawn,mow lawn four times,100,0,4,300,False

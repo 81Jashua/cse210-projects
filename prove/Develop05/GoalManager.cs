@@ -116,30 +116,43 @@ public class GoalManager
             outputFile.WriteLine(GetScore());
             foreach (Goal goal in _goals)
             {
-                
-                //outputFile.WriteLine($"{goal},{goal.GetName()},{goal.GetDescription()},{goal.GetPoints()},{goal.IsComplete()}");
                 outputFile.WriteLine($"{goal.GetStringRepresentation()}");
             }
         }
     }
-    public void LoadGoals()
+    public void LoadGoals(string file)
     {
-        // journal._entries.Clear();
-        // string filename = file;
-        // string[] lines = System.IO.File.ReadAllLines(filename);
+        _goals.Clear();
+        string filename = file;
+        string[] lines = File.ReadAllLines(filename);
 
-        // foreach (string line in lines)
-        // {
-        //     string[] parts = line.Split(",");
-            
-        //     Console.WriteLine($"Date: {parts[0]} Prompt: {parts[1]}\n{parts[2]}");
-        //     Entry entry = new Entry()
-        //     {
-        //         _date = parts[0],
-        //         _promptText = parts[1],
-        //         _entryText = parts[2]
-        //     };
-        //     journal.AddEntry(entry);
+        foreach (string line in lines.Skip(1))
+        {
+            string[] parts = line.Split(",");
+            switch(parts[0])
+            {
+                case "SimpleGoal":
+                {
+                    SimpleGoal simpleGoal = new SimpleGoal(parts[1], parts[2], parts[3]);
+                    simpleGoal.SetComplete(bool.Parse(parts[4]));
+                    _goals.Add(simpleGoal);
+                    break;
+                }
+                case "EternalGoal":
+                {
+                    EternalGoal eternalGoal = new EternalGoal(parts[1], parts[2], parts[3]);
+                    _goals.Add(eternalGoal);
+                    break;
+                }
+                case "CheckListGoal":
+                {
+                    CheckListGoal checkListGoal = new CheckListGoal(parts[1], parts[2], parts[3], int.Parse(parts[6]), int.Parse(parts[5]));
+                    checkListGoal.SetAmountCompleted(int.Parse(parts[4]));
+                    _goals.Add(checkListGoal);
+                    break;
+                }
+            }
+        }              
     }
     public void DisplayScore()
     {

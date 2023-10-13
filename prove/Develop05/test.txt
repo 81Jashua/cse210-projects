@@ -1,4 +1,0 @@
-0
-SimpleGoal,simple name,simple description,100,False
-SimpleGoal,simple two,description two,200,False
-EternalGoal,eternal name,eternal description,300,False

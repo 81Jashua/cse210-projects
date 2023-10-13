@@ -14,6 +14,10 @@ public class SimpleGoal : Goal
     {
         return _isComplete;
     }
+    public void SetComplete(bool value)
+    {
+        _isComplete = value;
+    }
     public override string GetStringRepresentation()
     {       
         return $"SimpleGoal,{GetName()},{GetDescription()},{GetPoints()},{IsComplete()}";

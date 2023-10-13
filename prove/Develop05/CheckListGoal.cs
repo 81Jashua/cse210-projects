@@ -12,6 +12,10 @@ public class CheckListGoal : Goal
     {
         return _amountCompleted;
     }
+    public void SetAmountCompleted(int amountCompleted)
+    {
+        _amountCompleted = amountCompleted;
+    }
     public int GetTarget()
     {
         return _target;
@@ -36,7 +40,7 @@ public class CheckListGoal : Goal
     {
         return $"CheckListGoal,{GetName()},{GetDescription()},{GetPoints()},{GetAmountCompleted()},{GetTarget()},{GetBonus()},{IsComplete()}";
     }
-    public string GetDetailsString()
+    public override string GetDetailsString()
     {
         string status = "[ ]";
         if (IsComplete() == true)

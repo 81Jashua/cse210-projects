@@ -21,12 +21,7 @@ class Program
                 {
                     //Create New Goal
                     Console.Clear();
-                    goalManager.CreateGoal();
-                    // string name = "Breathing Activity";
-                    // string description = "This activity will help you relax by walking you through breathing in and out slowly.\nClear your mind and focus on your breathing.";
-                    // BreathingActivity breathingActivity = new BreathingActivity(name, description);
-                    // breathingActivity.Run();
-                                                   
+                    goalManager.CreateGoal();      
                     break;
                 }
                 case 2:
@@ -49,7 +44,9 @@ class Program
                 {
                     //Load Goals
                     Console.Clear();
-                    Console.WriteLine("Load Goals");
+                    Console.WriteLine("What is the name of the file you are loading?");
+                    string fileName = Console.ReadLine();
+                    goalManager.LoadGoals(fileName);
                     break;
                 }
                 case 5:
