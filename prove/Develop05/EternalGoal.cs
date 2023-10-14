@@ -7,6 +7,9 @@ public class EternalGoal : Goal
     {
         
     }
+    public override void SetComplete(bool value)
+    {
+    }
     public override bool IsComplete()
     {
         return false;

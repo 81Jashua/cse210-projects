@@ -33,6 +33,10 @@ public class CheckListGoal : Goal
             SetPoints(bonus.ToString());
         }
     }
+    public override void SetComplete(bool value)
+    {
+        _amountCompleted = 0;        
+    }
     public override bool IsComplete()
     {
         if (_amountCompleted == _target)

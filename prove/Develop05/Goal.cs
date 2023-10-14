@@ -36,6 +36,8 @@ public abstract class Goal
 
     public abstract bool IsComplete();
 
+    public abstract void SetComplete(bool value);
+
     public virtual string GetDetailsString()
     {
         string status = "[ ]";

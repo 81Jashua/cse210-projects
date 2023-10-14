@@ -1,4 +1,5 @@
-300
+2200
 SimpleGoal,simple name,simple description,100,True
 EternalGoal,eternal name,eternal description,200,False
-CheckListGoal,checklist name,checklist description,300,0,3,500,False
+CheckListGoal,checklist name,checklist description,800,0,3,500,False
+EternalGoal,prayer,pray every day,100,False

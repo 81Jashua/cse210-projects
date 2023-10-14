@@ -3,8 +3,6 @@ public class GoalManager
     private List<Goal> _goals = new List<Goal>();
     private int _score = 0;
 
-    //GoalManager(){}
-
     public int GetScore()
     {
         return _score;
@@ -23,19 +21,6 @@ public class GoalManager
     public void SetList(Goal goal)
     {
         _goals.Add(goal);
-    }
-
-    public void Start()
-    {
-
-    }
-    public void DisplayPlayerInfo()
-    {
-
-    }
-    public void ListGoalNames()
-    {
-
     }
     public void ListGoalDetails()
     {
@@ -110,9 +95,12 @@ public class GoalManager
             Console.WriteLine($"{_goals.IndexOf(goal) + 1}. {goal.GetName()}");
         }
         Console.Write("Which goal did you accomplish: ");
-        int selection = int.Parse(Console.ReadLine()) -1;
-        _goals[selection].RecordEvent();
-        SetScore(int.Parse(_goals[selection].GetPoints()));
+        int selection = int.Parse(Console.ReadLine()) -1;        
+        if (ResetGoal(selection) == false)
+        {
+            _goals[selection].RecordEvent();
+            SetScore(int.Parse(_goals[selection].GetPoints()));
+        }
     }
     public void SaveGoals(string file)
     {
@@ -168,5 +156,28 @@ public class GoalManager
     public void DisplayScore()
     {
         Console.WriteLine($"You have {GetScore()} points.\n");
+    }
+    public bool ResetGoal(int selection)
+    {
+        bool change = false;
+        if (_goals[selection].IsComplete())
+        {            
+            Console.WriteLine("\nThis goal has already been completed. Would you like to reset it?");
+            Console.Write("Type 'y' for yes or 'n' for no: ");
+            string answer = Console.ReadLine();
+            if (answer == "y")
+            {
+                _goals[selection].SetComplete(false);
+                Console.WriteLine("Good thinking, you're goal has been reset");
+                ListGoalDetails();
+                change = true;
+            }
+            else
+            {
+                RecordEvent();
+                change = false;
+            }
+        }
+        return change;
     }
 }
