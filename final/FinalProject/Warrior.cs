@@ -1,6 +1,6 @@
 public class Warrior : Character
 {
-    public Warrior(string type, string name, string description) : base(type, name, description)
+    public Warrior(string type, string name, int health = 5) : base(type, name, health)
     {
     }
     public override string SpecialAbility()

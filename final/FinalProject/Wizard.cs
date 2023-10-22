@@ -1,7 +1,7 @@
 public class Wizard : Character
 {
     private int _mana;
-    public Wizard(string type, string name, string description) : base(type, name, description)
+    public Wizard(string type, string name) : base(type, name)
     {
     }
 
