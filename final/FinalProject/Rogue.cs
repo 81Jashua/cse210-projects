@@ -1,6 +1,6 @@
 public class Rogue : Character
 {
-    public Rogue(string type, string name) : base(type, name)
+    public Rogue(string type, string name, int health = 5, int strength = 5, int intelligence = 2) : base(type, name, health, strength, intelligence)
     {
     }
 

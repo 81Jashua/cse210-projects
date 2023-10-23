@@ -5,9 +5,13 @@ public class AdventureManager
     private Character _character;
     public void Run()
     {
-        Console.WriteLine("-------======= Welcome to Adventure Quest! =======-------");
+        Console.WriteLine("-------======= Welcome to Adventure Quest! =======-------\n");
         ChooseCharacter();
         ChooseCharacterStats();
+        ShowSpinner(3);
+        _character.GetCharacterDetails();
+
+        ChooseAdventure();
 
     }
 
@@ -35,12 +39,32 @@ public class AdventureManager
                 SetCharacter(warrior);
                 break;
             }
+            case 2:
+            {
+                Console.WriteLine("foo:");
+                Console.Write("What is your Wizards's name? ");
+                string type = "wizard";
+                string name = Console.ReadLine();
+                Wizard wizard = new Wizard(type, name);
+                SetCharacter(wizard);
+                break;
+            }
+            case 3:
+            {
+                Console.WriteLine("foo:");
+                Console.Write("What is your Rogue's name? ");
+                string type = "rogue";
+                string name = Console.ReadLine();
+                Rogue rogue = new Rogue(type, name);
+                SetCharacter(rogue);
+                break;
+            }
         }
     }
     public void ChooseCharacterStats()
     {
         Console.WriteLine("Roll the dice for your character stats:");
-        Console.Write("Roll for Health: ");
+        Console.WriteLine("Roll for Health:");
         string response = Console.ReadLine();
         while(response == "roll")
         {
@@ -49,12 +73,64 @@ public class AdventureManager
             Console.WriteLine($"You rolled a {numberRolled}. Your Health is {_character.GetHealth()}");
             break;
         }
+        Console.WriteLine("Roll for Strength:");
+        response = Console.ReadLine();
+        while(response == "roll")
+        {
+            int numberRolled = RollDice();
+            _character.SetStrength(numberRolled);
+            Console.WriteLine($"You rolled a {numberRolled}. Your Strength is {_character.GetStrength()}");
+            break;
+        }
+        Console.WriteLine("Roll for Intelligence:");
+        response = Console.ReadLine();
+        while(response == "roll")
+        {
+            int numberRolled = RollDice();
+            _character.SetIntelligence(numberRolled);
+            Console.WriteLine($"You rolled a {numberRolled}. Your Intelligence is {_character.GetIntelligence()}");
+            break;
+        }
+    }
+    public int ChooseAdventure()
+    {
+        Console.WriteLine("Choose an Adventure");
+        Console.WriteLine("  1. The Abandoned Castle");
+        Console.WriteLine("  2. The Dark Forest");
+        Console.WriteLine("  3. The Old Mill");
+        int selection = int.Parse(Console.ReadLine());
+        return selection;
     }
     public int RollDice()
     {
         Random random = new Random();
         int numberRolled = random.Next(1, 7);  
         return numberRolled;
+    }
+    public static void ShowSpinner(int seconds)
+    {
+        while (seconds != 0)
+        {
+            Console.Write("/");
+            Thread.Sleep(250);
+            Console.Write("\b \b"); // Erase the + character            
+            
+            Console.Write("-"); // Replace it with the - character
+            Thread.Sleep(250);
+            Console.Write("\b \b");            
+            
+            Console.Write("\\"); // Replace it with the - character
+            Thread.Sleep(250);
+            Console.Write("\b \b");
+            
+            Console.Write("|"); // Replace it with the - character
+            Thread.Sleep(250);
+            Console.Write("\b \b");
+            
+        
+            seconds -= 1;
+        }
+        Console.Write("\n");        
     }
     public void SetCharacter(Character character)
     {

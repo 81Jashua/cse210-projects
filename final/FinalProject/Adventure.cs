@@ -7,10 +7,26 @@ public class Adventure
 
     private List<Monster> _monsters = new List<Monster>();
 
-    public Adventure(string name, string description)
+    public void CreateAdventure(int selection)
     {
-        _name = name;
-        _description = description;
+        switch(selection)
+        {
+            case 1:
+            {
+                //The Abandoned Castle
+                break;
+            }
+            case 2:
+            {
+                //The Dark Forest
+                break;
+            }
+            case 3:
+            {
+                //The Old Mill
+                break;
+            }
+        }
     }
     public void SetTracker()
     {
