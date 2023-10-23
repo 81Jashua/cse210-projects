@@ -3,6 +3,7 @@ using System.Diagnostics;
 public class AdventureManager
 {
     private Character _character;
+    private Adventure _adventure = new Adventure();
     public void Run()
     {
         Console.WriteLine("-------======= Welcome to Adventure Quest! =======-------\n");
@@ -12,6 +13,7 @@ public class AdventureManager
         _character.GetCharacterDetails();
 
         ChooseAdventure();
+        RunScenarios();
 
     }
 
@@ -92,14 +94,18 @@ public class AdventureManager
             break;
         }
     }
-    public int ChooseAdventure()
+    public void ChooseAdventure()
     {
         Console.WriteLine("Choose an Adventure");
         Console.WriteLine("  1. The Abandoned Castle");
         Console.WriteLine("  2. The Dark Forest");
         Console.WriteLine("  3. The Old Mill");
         int selection = int.Parse(Console.ReadLine());
-        return selection;
+        _adventure.CreateAdventure(selection);
+    }
+    public void RunScenarios()
+    {
+        _adventure.GetScenario();
     }
     public int RollDice()
     {
