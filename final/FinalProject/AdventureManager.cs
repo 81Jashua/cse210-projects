@@ -144,7 +144,7 @@ public class AdventureManager
                         if(response == "roll")
                         {
                             int numberRolled = RollDice();
-                            if ((numberRolled + _character.GetIntelligence()) >= 12)
+                            if ((numberRolled + _character.GetIntelligence()) >= 15)
                             {
                                 ShowSpinner(3);
                                 Console.WriteLine($"Your intelligence: {_character.GetIntelligence()} + your roll: {numberRolled} is greater than 5!");
@@ -155,14 +155,10 @@ public class AdventureManager
                             }
                             else 
                             {
-                                ShowSpinner(3);
                                 Console.WriteLine($"Your intelligence: {_character.GetIntelligence()} + your roll: {numberRolled} is less than 5!");
                                 Console.WriteLine("While searching you knock over a tin can making too much noise. You are surprised attacked!");
-                                //Monster monster = MonsterEncounter("Goblin");
-                                MonsterEncounter("Goblin");
-                                //monster.GetMonsterDetails();
-                                //Battle(false, monster);
-
+                                ShowSpinner(3);
+                                MonsterEncounter("Goblin", false);
                                 difficulty ++;
                             }
                         }           
@@ -170,19 +166,102 @@ public class AdventureManager
                     }
                     else
                     {
-
+                        Console.WriteLine($"You've decided to {descision}:");
+                        Console.WriteLine("Roll the dice do see what happens: Type 'roll'");
+                        string response = Console.ReadLine();
+                        if(response == "roll")
+                        {
+                            int numberRolled = RollDice();
+                            if ((numberRolled + _character.GetIntelligence()) >= 15)
+                            {
+                                ShowSpinner(3);
+                                Console.WriteLine($"Your intelligence: {_character.GetIntelligence()} + your roll: {numberRolled} is greater than 5!");
+                                Console.WriteLine(@"You spot a small pack of goblins. You wrap some torn sheets over yourself and howl like a Ghost.
+                                                    Spooked the goblins run off");
+                                difficulty ++;
+                                break;
+                            }
+                            else 
+                            {
+                                Console.WriteLine($"Your intelligence: {_character.GetIntelligence()} + your roll: {numberRolled} is less than 5!");
+                                Console.WriteLine("While searching you knock over a tin can making too much noise. You are surprised attacked!");
+                                ShowSpinner(3);
+                                MonsterEncounter("Goblin", false);
+                                difficulty ++;
+                            }
+                        }          
                     }
                     break;
                 }
                 case 2:
                 {
+                    Console.WriteLine("===========================================================");
+                    Console.WriteLine("Scenario 2:\n");
+                    Console.WriteLine(@"You check your weapon and brush off some dirt and continue down the road.
+                    Next to a small outpost you notice an Ork sleeping. Do you charge the Ork or try to avoid him? 
+                    Type 'attach' to attack or 'avoid' to avoid");
+                    string descision = Console.ReadLine();
+                    if (descision == "attack")
+                    {
+                        Console.WriteLine($"You've decided to {descision}:");
+                        Console.WriteLine("Roll the dice do see what happens: Type 'roll'");
+                        string response = Console.ReadLine();
+                        if(response == "roll")
+                        {
+                            int numberRolled = RollDice();
+                            if ((numberRolled + _character.GetStrength()) >= 10)
+                            {
+                                ShowSpinner(8);
+                                Console.WriteLine($"Your Strength: {_character.GetStrength()} + your roll: {numberRolled} is greater than 9!");
+                                Console.WriteLine(@"You charge head on and stab the Ork before he can even react.");
+                                difficulty ++;
+                                break;
+                            }
+                            else 
+                            {
+                                Console.WriteLine($"Your Strength: {_character.GetStrength()} + your roll: {numberRolled} is less than 11!");
+                                Console.WriteLine("While charging you trip on a rock. Although unharmed you wake the ork. Prepare for battle!");
+                                ShowSpinner(3);
+                                MonsterEncounter("Ork", true);
+                                difficulty ++;
+                            }
+                        }           
+
+                    }
+                    else
+                    {
+                        Console.WriteLine($"You've decided to {descision}:");
+                        Console.WriteLine("Roll the dice do see what happens: Type 'roll'");
+                        string response = Console.ReadLine();
+                        if(response == "roll")
+                        {
+                            int numberRolled = RollDice();
+                            if ((numberRolled + _character.GetIntelligence()) >= 15)
+                            {
+                                ShowSpinner(3);
+                                Console.WriteLine($"Your intelligence: {_character.GetIntelligence()} + your roll: {numberRolled} is greater than 5!");
+                                Console.WriteLine(@"You spot a small pack of goblins. You wrap some torn sheets over yourself and howl like a Ghost.
+                                                    Spooked the goblins run off");
+                                difficulty ++;
+                                break;
+                            }
+                            else 
+                            {
+                                Console.WriteLine($"Your intelligence: {_character.GetIntelligence()} + your roll: {numberRolled} is less than 5!");
+                                Console.WriteLine("While searching you knock over a tin can making too much noise. You are surprised attacked!");
+                                ShowSpinner(3);
+                                MonsterEncounter("Goblin", false);
+                                difficulty ++;
+                            }
+                        }          
+                    }
                     break;
                 }
             }
         }
         return "";        
     }
-    public void MonsterEncounter(string monsterType)
+    public void MonsterEncounter(string monsterType, bool testResult)
     {
         foreach(Monster monster in _monsters)
         {
@@ -191,32 +270,20 @@ public class AdventureManager
                 Console.Clear();
                 _character.GetCharacterDetails();
                 monster.GetMonsterDetails();
-                Console.WriteLine("The Goblin surprised attacked he goes first.");
-                Battle(false, monster);
-                ShowSpinner(3);
+                Console.WriteLine($"You failed your test. The {monster.GetName()} goes first.");
+                Battle(testResult, monster);
+                ShowSpinner(5);
             }
         }
-    }
-    // public Monster MonsterEncounter(string monsterType)
-    // {
-    //     Monster myMonster = new Monster("bla", "bla", 3, 3);
-    //     foreach(Monster monster in _monsters)
-    //     {
-    //         if(monster.GetName() == monsterType)
-    //         {
-    //             myMonster = monster;
-    //         }
-    //     }
-    //     return myMonster;
-    // }
+    }    
     public void AddMonstersToList(string adventure)
     {
         switch(adventure)
         {
             case "The Abandoned Castle":
             {
-                Monster monsterOne = new Monster("Goblin", "Small but dangerous", 12, 2);
-                Monster monsterTwo = new Monster("Orc", "Large and very strong", 7, 5);
+                Monster monsterOne = new Monster("Goblin", "Small but dangerous", 5, 2);
+                Monster monsterTwo = new Monster("Orc", "Large and very strong", 10, 5);
                 //Monster monsterBoss = new Monster("Goblin", "Small but dangerous", 3, 2);
                 _monsters.Add(monsterOne);
                 _monsters.Add(monsterTwo);
@@ -226,40 +293,34 @@ public class AdventureManager
     }
     public void Battle(bool priority, Monster monster)
     {
-        if(_character.CheckHealth() == false)
-        {
-            Console.WriteLine("Your Character lost all their lives. You must restart the quest");
-            return;            
-        }
-        if(monster.CheckHealth() == false)
-        {
-            Console.WriteLine($"You defeated the {monster.GetName} Congradulations");
-            return;
-        }
         while((_character.GetHealth() > 0) && monster.GetHealth() > 0)
         {
             if(priority == true)
             {
                 Console.WriteLine("Your hero attacks: type 'roll' to roll the dice");
-                int diceResult = int.Parse(Console.ReadLine());
-                Console.WriteLine($"You rolled a: {diceResult} + Your strength and weapon {_character.Attack(diceResult)}!!!");
-                monster.SetHealth(_character.Attack(diceResult));
-                ShowSpinner(3);
-                Console.Clear();
-                _character.GetCharacterDetails();
-                monster.GetMonsterDetails();
-                
-                if(monster.CheckHealth() == false)
+                if (Console.ReadLine() == "roll")
                 {
-                    Console.WriteLine($"You defeated the {monster.GetName} Congradulations");
-                    ShowSpinner(3);
-                    return;
-                }
-                else
-                {
-                    Console.WriteLine($"Although hurt the {monster.GetName()} attacks back");
-                    Console.WriteLine($"The {monster}'s attack is {monster.GetAttack()}");
-                    _character.RemoveHealth(monster.GetAttack());
+                    int diceResult = RollDice();
+                    Console.WriteLine($"You rolled a: {diceResult} + Your strength and weapon {_character.Attack(diceResult)}!!!");
+                    monster.SetHealth(_character.Attack(diceResult));
+                    ShowSpinner(8);
+                    Console.Clear();
+                    _character.GetCharacterDetails();
+                    monster.GetMonsterDetails();
+                    
+                    if(monster.CheckHealth() == false)
+                    {
+                        Console.WriteLine($"You defeated the {monster.GetName()} Congradulations");
+                        ShowSpinner(8);
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Although hurt the {monster.GetName()} attacks back");
+                        Console.WriteLine($"The {monster}'s attack is {monster.GetAttack()}");
+                        _character.RemoveHealth(monster.GetAttack());
+                        ShowSpinner(12);
+                    }
                 }
             }
             else
@@ -267,15 +328,40 @@ public class AdventureManager
                 Console.WriteLine($"The {monster.GetName()} attacks");
                 Console.WriteLine($"The {monster}'s attack is {monster.GetAttack()}");
                 _character.RemoveHealth(monster.GetAttack());
+                ShowSpinner(12);
                 Console.Clear();
                 _character.GetCharacterDetails();
                 monster.GetMonsterDetails();
                 if(_character.CheckHealth() == false)
                 {
                     Console.WriteLine("You have been defeated. You must start over");
-                    ShowSpinner(3);
+                    ShowSpinner(6);
                     return;
+                }    
+                else
+                {
+                    Console.WriteLine("Your hero attacks: type 'roll' to roll the dice");
+                    if(Console.ReadLine() == "roll")
+                    {
+                        int diceResult = RollDice();
+                        Console.WriteLine($"You rolled a: {diceResult} + Your strength and weapon {_character.Attack(diceResult)}!!!");
+                        monster.SetHealth(_character.Attack(diceResult));
+                        ShowSpinner(12);
+                        Console.Clear();
+                        _character.GetCharacterDetails();
+                        monster.GetMonsterDetails();
+                    }
                 }
+            }
+            if(_character.CheckHealth() == false)
+            {
+                Console.WriteLine("Your Character lost all their lives. You must restart the quest");
+                return;            
+            }
+            if(monster.CheckHealth() == false)
+            {
+                Console.WriteLine($"You defeated the {monster.GetName()} Congradulations");
+                return;
             }
         }
     }
