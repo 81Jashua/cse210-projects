@@ -11,7 +11,7 @@ public class Scenarios
             case 1:
             {
                 string scenario = GetCastleEncounter(difficulty);
-                break
+                break;
             }
         }
     }
@@ -32,7 +32,7 @@ public class Scenarios
                 {
                     Console.WriteLine("You've decided to search:");
                     Console.WriteLine("Roll the dice do see what happnes:");
-                    
+
                 }
                 break;
             }
@@ -40,7 +40,8 @@ public class Scenarios
             {
                 break;
             }
-        }        
+        }
+        return "";        
     }
 
 
