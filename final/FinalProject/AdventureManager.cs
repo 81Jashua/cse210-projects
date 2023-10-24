@@ -134,7 +134,7 @@ public class AdventureManager
                 {
                     Console.WriteLine("Scenario 1:");
                     Console.WriteLine(@"You decide to take the road. While traveling on the road you see an abandonded wagon.
-                    What do you do? type 'search' to search or 'ignore' to ignore");
+        What do you do? type 'search' to search or 'ignore' to ignore");
                     string descision = Console.ReadLine();
                     if (descision == "search")
                     {
@@ -198,13 +198,13 @@ public class AdventureManager
                     Console.WriteLine("===========================================================");
                     Console.WriteLine("Scenario 2:\n");
                     Console.WriteLine(@"You check your weapon and brush off some dirt and continue down the road.
-            Next to a small outpost you notice an Ork sleeping. Do you charge the Ork or try to avoid him? 
-            Type 'attack' to attack or 'avoid' to avoid");
+Next to a small outpost you notice an Ork sleeping. Do you charge the Ork or try to avoid him? 
+Type 'attack' to attack or 'avoid' to avoid");
                     string descision = Console.ReadLine();
                     if (descision == "attack")
                     {
                         Console.WriteLine($"You've decided to {descision}:");
-                        Console.WriteLine("Roll the dice do see what happens: Type 'roll'");
+                        Console.WriteLine("\nRoll the dice do see what happens: Type 'roll'");
                         string response = Console.ReadLine();
                         if(response == "roll")
                         {
@@ -241,7 +241,7 @@ public class AdventureManager
                             {
                                 Console.WriteLine($"Your intelligence: {_character.GetIntelligence()} + your roll: {numberRolled} is greater than 11!");
                                 Console.WriteLine(@"While sneak through the side you see a rope holding heavy box just above the Orc.
-                    You cut the rope and the box falls ontop of the Ork, putting him out of commission");
+You cut the rope and the box falls ontop of the Ork, putting him out of commission");
                                 ShowSpinner(8);
                                 difficulty ++;
                                 break;
@@ -263,8 +263,9 @@ public class AdventureManager
                     Console.WriteLine("===========================================================");
                     Console.WriteLine("Scenario 3:\n");
                     Console.WriteLine(@"In the distance you spot the castle. As you approach the castle you notice break in the wall
-                    You squeeze through only to find a large mountain troll in the foyer. This must have been what caused all the trouble.
-                    The Troll bellows a large roar. You prepare for the fight of your life.");
+You squeeze through only to find a large mountain troll in the foyer. This must have been what caused all the trouble.
+The Troll bellows a large roar. You prepare for the fight of your life.
+What do you do? Type 'search' to search, 'attack' to attack, ");
                     string descision = Console.ReadLine();
                     if (descision == "attack")
                     {
@@ -274,20 +275,21 @@ public class AdventureManager
                         if(response == "roll")
                         {
                             int numberRolled = RollDice();
-                            if ((numberRolled + _character.GetStrength()) >= 10)
+                            if ((numberRolled + _character.GetStrength()) >= 15)
                             {
-                                Console.WriteLine($"Your Strength: {_character.GetStrength()} + your roll: {numberRolled} is greater than 9!");
-                                Console.WriteLine(@"You charge head on and stab the Ork before he can even react.");
+                                Console.WriteLine($"Your Strength: {_character.GetStrength()} + your roll: {numberRolled} is greater than 14!");
+                                Console.WriteLine(@"Your courage catches the toll off guard. You get first attack");
                                 ShowSpinner(8);
+                                MonsterEncounter("Troll", true);
                                 difficulty ++;
                                 break;
                             }
                             else 
                             {
-                                Console.WriteLine($"Your Strength: {_character.GetStrength()} + your roll: {numberRolled} is less than 11!");
-                                Console.WriteLine("While charging you trip on a rock. Although unharmed you wake the Ork. Prepare for battle!");
+                                Console.WriteLine($"Your Strength: {_character.GetStrength()} + your roll: {numberRolled} is less than 15!");
+                                Console.WriteLine("Your bravery does not phase the troll. He takes a large swing with his club.");
                                 ShowSpinner(8);
-                                MonsterEncounter("Ork", true);
+                                MonsterEncounter("Troll", false);
                                 difficulty ++;
                             }
                         }
@@ -302,11 +304,11 @@ public class AdventureManager
                         if(response == "roll")
                         {
                             int numberRolled = RollDice();
-                            if ((numberRolled + _character.GetIntelligence()) >= 12)
+                            if ((numberRolled + _character.GetIntelligence()) >= 15)
                             {
-                                Console.WriteLine($"Your intelligence: {_character.GetIntelligence()} + your roll: {numberRolled} is greater than 11!");
-                                Console.WriteLine(@"While sneak through the side you see a rope holding heavy box just above the Orc.
-                    You cut the rope and the box falls ontop of the Ork, putting him out of commission");
+                                Console.WriteLine($"Your intelligence: {_character.GetIntelligence()} + your roll: {numberRolled} is greater than 14!");
+                                Console.WriteLine(@"You notice a weakened arch. You encourage the troll to go under the arch. The troll Swings his club
+                                towards. You dodge the club and it smashes into the wall. The vibration is enough for the arch to fall on the Troll crushing it");
                                 ShowSpinner(8);
                                 difficulty ++;
                                 break;
@@ -314,9 +316,9 @@ public class AdventureManager
                             else 
                             {
                                 Console.WriteLine($"Your intelligence: {_character.GetIntelligence()} + your roll: {numberRolled} is less than 12!");
-                                Console.WriteLine("While sneaking carefully you get to close and the Ork smells you. He gets up ready to battle!");
+                                Console.WriteLine("You try to find a weakness but the troll gets too close to quickly. Prepare to battle!");
                                 ShowSpinner(3);
-                                MonsterEncounter("Ork", true);
+                                MonsterEncounter("Troll", true);
                                 difficulty ++;
                             }
                         }          
@@ -325,6 +327,7 @@ public class AdventureManager
                 }
             }
         }
+        EndMessage();
         return "";        
     }
     public void MonsterEncounter(string monsterType, bool testResult)
@@ -350,7 +353,7 @@ public class AdventureManager
             {
                 Monster monsterOne = new Monster("Goblin", "Small but dangerous", 5, 2);
                 Monster monsterTwo = new Monster("Ork", "Large and very strong", 10, 5);
-                Boss monsterThree = new Boss("Troll", "Small but dangerous", 3, 2);
+                Boss monsterThree = new Boss("Troll", "Small but dangerous", 20, 5);
                 _monsters.Add(monsterOne);
                 _monsters.Add(monsterTwo);
                 _monsters.Add(monsterThree);
@@ -430,6 +433,27 @@ public class AdventureManager
                 Console.WriteLine($"You defeated the {monster.GetName()} Congradulations");
                 return;
             }
+        }
+    }
+    public void EndMessage()
+    {
+        if(_character.CheckHealth())
+        {
+            Console.WriteLine("=========================================================");
+            Console.WriteLine("=========================================================");
+            Console.WriteLine("================You Saved the Castle=====================");
+            Console.WriteLine("==     The Towns people sing songs in your praise      ==");
+            Console.WriteLine("==     and petition your professor to give you an A    ==");
+            Console.WriteLine("==     Because this took way to long to get to this    ==");
+            Console.WriteLine("==     point in this project                           ==");
+            Console.WriteLine("=========================================================");
+            Console.WriteLine("=========================================================");
+        }
+        else
+        {
+            Console.WriteLine("=========================================================");
+            Console.WriteLine("==  You lost all of your lives Better luck next time   ==");
+            Console.WriteLine("=========================================================");
         }
     }
     public int RollDice()

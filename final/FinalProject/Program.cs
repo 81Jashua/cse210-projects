@@ -4,8 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello FinalProject World!");
         AdventureManager adventureManager = new AdventureManager();
-        adventureManager.Run();
+        string selection = "1";
+        while(selection == "1")
+        {
+            Console.WriteLine("Welcome to Adventure Quest");
+            Console.WriteLine("  1. Start");
+            Console.WriteLine("  2. Quit");
+            selection = Console.ReadLine();
+            adventureManager.Run();
+        }
     }
 }
