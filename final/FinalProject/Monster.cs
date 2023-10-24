@@ -17,4 +17,48 @@ public class Monster
     {
         return _health;
     }
+    public string GetName()
+    {
+        return _name;
+    }
+    public string GetDescription()
+    {
+        return _description;
+    }
+    public int GetAttack()
+    {
+        return _attack;
+    }
+    public void SetHealth(int attacked)
+    {
+        _health -= attacked;
+    }
+    public void GetMonsterDetails()
+    {
+        Console.WriteLine($"                                --xxxXXXXX Monster: {GetName()} XXXXXxxx-- ");
+        Console.WriteLine($"                                  Description: ---- {GetDescription()}");
+        Console.WriteLine($"                                  Health: --------- {DisplayHealth(GetHealth())}");
+        Console.WriteLine($"                                  Attack: --------- {GetAttack()}\n");
+    }
+    public string DisplayHealth(int lives)
+    {
+        string life = "";
+        while(lives > 0)
+        {
+            life +="O";
+            lives -= 1;
+        }
+        return life;
+    }
+    public bool CheckHealth()
+    {
+        if(GetHealth() > 0)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
 }

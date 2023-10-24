@@ -13,9 +13,11 @@ public class Adventure
             case 1:
             {
                 //The Abandoned Castle
-                SetName(" The Abandoned Castle");
+                SetName("The Abandoned Castle");
                 SetDescription(AdventureDescription(selection));
                 DisplayAdventure();
+
+                //GetScenario(selection);
                                 
                 break;
             }
@@ -47,9 +49,9 @@ public class Adventure
             case 1:
             {
                 //Abandoned Castle description
-                description = @"Once a beautiful castle known for its riches.\nBuilt into the side of the mountain for defenses
-             they discovered gold. \nDiving deeper and deeper into the mountain they awoke something. 
-             For years no news came. Recently there have been reports of evil creatures attacking farms.\n
+                description = @"Once a beautiful castle known for its riches. Built into the side of the mountain for defenses
+             they discovered gold. Diving deeper and deeper into the mountain they awoke something. 
+             For years no news came. Recently there have been reports of evil creatures attacking farms.
              Your quest is to find the problem and save the town.";
                 break;
             }
@@ -68,10 +70,11 @@ public class Adventure
         }
         return description;
     }
-    public void GetScenario()
-    {
-        
-    }
+    // public void GetScenario(int adventure)
+    // {
+    //     Scenarios scenarios = new Scenarios();
+    //     scenarios.Scenario(adventure);
+    // }
     public void SetName(string name)
     {
         _name = name;

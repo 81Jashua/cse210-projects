@@ -14,9 +14,9 @@ public abstract class Character
         _strength = strength;
         _intelligence = intelligence;
     }    
-    public void Attack()
+    public virtual int Attack(int roll)
     {
-
+        return GetStrength() + roll;
     }
     public void Search()
     {
@@ -49,6 +49,10 @@ public abstract class Character
     {
         _health += health;
     }
+    public void RemoveHealth(int attacked)
+    {
+        _health -= attacked;
+    }
     public void SetStrength(int strength)
     {
         _strength += strength;
@@ -66,6 +70,17 @@ public abstract class Character
             lives -= 1;
         }
         return life;
+    }
+    public bool CheckHealth()
+    {
+        if(GetHealth() > 0)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
     }
     public string GetType()
     {
