@@ -67,7 +67,7 @@ public class AdventureManager
     public void ChooseCharacterStats()
     {
         Console.WriteLine("Roll the dice for your character stats:");
-        Console.WriteLine("Roll for Health:");
+        Console.WriteLine("Roll for Health type, 'roll':");
         string response = Console.ReadLine();
         while(response == "roll")
         {
@@ -76,7 +76,7 @@ public class AdventureManager
             Console.WriteLine($"You rolled a {numberRolled}. Your Health is {_character.GetHealth()}");
             break;
         }
-        Console.WriteLine("Roll for Strength:");
+        Console.WriteLine("Roll for Strength, type 'roll':");
         response = Console.ReadLine();
         while(response == "roll")
         {
@@ -85,7 +85,7 @@ public class AdventureManager
             Console.WriteLine($"You rolled a {numberRolled}. Your Strength is {_character.GetStrength()}");
             break;
         }
-        Console.WriteLine("Roll for Intelligence:");
+        Console.WriteLine("Roll for Intelligence, type 'roll':");
         response = Console.ReadLine();
         while(response == "roll")
         {
